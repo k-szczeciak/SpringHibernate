@@ -101,6 +101,7 @@ public class Book {
 
     @NotNull
     @Size(min = 5)
+    @StartWith("N")
     private String name;
 
 //    @Temporal(TemporalType.DATE)
@@ -217,7 +218,7 @@ public class Book {
                 ", surname='" + surname + '\'' +
                 ", description='" + description + '\'' +
                 ", rating=" + rating +
-                ", publisher=" + publisher +
+                //", publisher=" + publisher +
                 '}';
     }
 }

@@ -22,9 +22,20 @@
 </style>
 
 <form:form method="post" modelAttribute="book">
-
+    Name:
+    <form:errors path="name"/><br>
     <form:input path="name" /><br>
+
+    Description:
+    <form:errors path="description"/><br>
     <form:input path="description" /><br>
+
+    Rating:
+    <form:errors path="rating"/><br>
+    <form:input path="rating" /><br>
+
+    Publisher:
+    <form:errors path="publisher" /><br>
     <form:select path="publisher" items="${allPublishers}" itemLabel="name" itemValue="id" />
 
     <input type="submit" value="Save" />

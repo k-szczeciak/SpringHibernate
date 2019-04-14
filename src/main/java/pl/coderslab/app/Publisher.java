@@ -19,7 +19,7 @@ public class Publisher {
     @NotNull
     private String name;
 
-    @NotNull
+    /*@NotNull
     @NIP
     private String nip;
 
@@ -41,7 +41,7 @@ public class Publisher {
         this.regon = regon;
     }
 
-    private String regon;
+    private String regon;*/
 
     @OneToMany(mappedBy = "publisher", fetch = FetchType.EAGER)
     private List<Book> books = new ArrayList<>();
@@ -87,7 +87,7 @@ public class Publisher {
         return "Publisher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", books=" + books +
+                //", books=" + books +
                 '}';
     }
 }
