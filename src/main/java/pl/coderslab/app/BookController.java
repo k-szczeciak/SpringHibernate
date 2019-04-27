@@ -54,6 +54,9 @@ public class BookController {
     @Autowired
     BookRepository bookRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @ModelAttribute("allPublishers")
     public List<Publisher> getAllPublisher() {
         return publisherDao.returnAllPublishers();
@@ -89,6 +92,16 @@ public class BookController {
 //        book.setPublisher(publisher);
         bookDao.saveBook(book);
         return "redirect:/allBooks";
+    }
+
+    @GetMapping("/showBookByCategory/{idCategory}")
+    @ResponseBody
+    public String showBookByCategory(@PathVariable String idCategory){
+        //
+        Category category = categoryRepository.findOne(Long.parseLong(idCategory));
+
+
+        return category.getName();
     }
 
 

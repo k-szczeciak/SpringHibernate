@@ -129,6 +129,17 @@ public class Book {
     @ManyToOne
     private Publisher publisher;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Book() {
     }
 
@@ -218,7 +229,7 @@ public class Book {
                 ", surname='" + surname + '\'' +
                 ", description='" + description + '\'' +
                 ", rating=" + rating +
-                //", publisher=" + publisher +
+                //", publisher=" + publisher +  //powodowalo blad rekurencji
                 '}';
     }
 }
