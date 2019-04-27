@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
@@ -46,6 +48,11 @@ public class BookController {
     private PublisherDao publisherDao;
     @Autowired
     private BookDao bookDao;
+    @Autowired
+    PublisherRepository publisherRepository;
+
+    @Autowired
+    BookRepository bookRepository;
 
     @ModelAttribute("allPublishers")
     public List<Publisher> getAllPublisher() {
@@ -68,6 +75,13 @@ public class BookController {
         model.addAttribute(book);
         return "book";
     }
+    @GetMapping("/findByPublisher/{idPublisher}")
+    @ResponseBody
+    public String findBooksByPublisherID(@PathVariable String idPublisher){
+        Publisher publisher = publisherRepository.findOne(Long.parseLong(idPublisher));
+        List<Book> books = bookRepository.findByPublisher(publisher);
+        return Arrays.toString(books.toArray());
+    }
 
     @PostMapping("/addBook")
     public String addBook(@ModelAttribute Book book) {
@@ -76,5 +90,8 @@ public class BookController {
         bookDao.saveBook(book);
         return "redirect:/allBooks";
     }
+
+
+
 
 }

@@ -147,7 +147,7 @@ public class WebConfig implements WebMvcConfigurer {
     Properties additionalProperties() {
         Properties properties = new Properties();
 //        properties.setProperty("hibernate.hbm2ddl.auto", "drop-and-create");
-        properties.setProperty("hibernate.hbm2ddl.auto", "none");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update"); //none
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.format_sql", "true");
