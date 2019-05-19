@@ -104,6 +104,15 @@ public class BookController {
         return category.getName();
     }
 
+    @GetMapping("/showBooksByTitle/{name}")
+    @ResponseBody
+    public String showBooksByTitle(@PathVariable String name){
+        List<Book> books = bookRepository.findByTitleNow(name);
+
+        return Arrays.toString(books.toArray());
+//        return null;
+    }
+
 
 
 
